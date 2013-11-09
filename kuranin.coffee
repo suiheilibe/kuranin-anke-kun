@@ -1,8 +1,11 @@
-casper = (require 'casper').create()
+casper = (require 'casper').create
+  'logLevel': 'info'
+  'verbose': true
 secret = require './secret'
 
 url = 'https://club.nintendo.jp/member/exec/index'
 candidate = []
+dateRemains = 7
 
 casper
 
@@ -21,19 +24,25 @@ casper
 
 .thenClick 'a[href="./memberEnqueteInfo"]', ->
   @echo @getCurrentUrl()
-  list = @evaluate ->
+  candidate = @evaluate (rem) ->
     nodes = document.querySelectorAll 'td:nth-child(2)'
     list = []
+    now = Date.now()
+    console.log now
     for i in [0...nodes.length]
-      if /.*\uff5e.*/.exec(nodes[i].textContent) != null
-        list.push i
-    console.log JSON.stringify list
-      #text = e.textContent
-      #if text != null then true else false
-    #  if /.*～.*/.exec(text) != null then true else false
-  for x in list
-    @echo x.textContent
+      dates = /^[^\uff5e]*\uff5e\D*(\d+)\D+(\d+)\D+(\d+)/
+        .exec(nodes[i].textContent)
+      if dates != null
+        end = new Date dates[1], dates[2] - 1, dates[3]
+        end.setDate(end.getDate() - rem)
+        if end.getTime() <= now
+          list.push i
+    return list
+  , dateRemains
+  console.log JSON.stringify list
   return
 
+for idx in candidate
+  1
 
 casper.run()
