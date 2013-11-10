@@ -61,7 +61,14 @@ enquetePage1 = ->
   if n == 4
     @fill 'form[name="ProductEnqueteForm"]',
       'textAnswer[0].answer': defaultScore # 満足度
-      'singleAnswer[0].answer': '0003' # どのくらい満足
+      'singleAnswer[0].answer': '0004' # どのくらい満足
+      'textAnswer[1].answer': defaultText # 満足したところ
+      'textAnswer[2].answer': defaultText # 不満なところ
+  else if n == 5
+    @fill 'form[name="ProductEnqueteForm"]',
+      'textAnswer[0].answer': defaultScore # 満足度
+      'singleAnswer[0].answer': '0004' # どのくらい満足
+      'singleAnswer[1].answer': '0003' # 期待していた満足度
       'textAnswer[1].answer': defaultText # 満足したところ
       'textAnswer[2].answer': defaultText # 不満なところ
   else if n == 23

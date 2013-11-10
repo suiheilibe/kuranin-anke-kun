@@ -92,7 +92,15 @@
     if (n === 4) {
       this.fill('form[name="ProductEnqueteForm"]', {
         'textAnswer[0].answer': defaultScore,
-        'singleAnswer[0].answer': '0003',
+        'singleAnswer[0].answer': '0004',
+        'textAnswer[1].answer': defaultText,
+        'textAnswer[2].answer': defaultText
+      });
+    } else if (n === 5) {
+      this.fill('form[name="ProductEnqueteForm"]', {
+        'textAnswer[0].answer': defaultScore,
+        'singleAnswer[0].answer': '0004',
+        'singleAnswer[1].answer': '0003',
         'textAnswer[1].answer': defaultText,
         'textAnswer[2].answer': defaultText
       });
