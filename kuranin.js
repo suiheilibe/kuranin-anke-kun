@@ -259,7 +259,6 @@
       nodes = document.querySelectorAll('td:nth-child(2)');
       list = [];
       now = Date.now();
-      console.log(now);
       for (i = _i = 0, _ref = nodes.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
         dates = /^[^\uff5e]*\uff5e\D*(\d+)\D+(\d+)\D+(\d+)/.exec(nodes[i].textContent);
         if (dates !== null) {
@@ -272,7 +271,6 @@
       }
       return list;
     }, dateRemains);
-    console.log(JSON.stringify(candidate));
   }).then(enqueteProceed).run();
 
 }).call(this);

@@ -216,7 +216,6 @@ casper
     nodes = document.querySelectorAll 'td:nth-child(2)'
     list = []
     now = Date.now()
-    console.log now
     for i in [0...nodes.length]
       dates = /^[^\uff5e]*\uff5e\D*(\d+)\D+(\d+)\D+(\d+)/
         .exec(nodes[i].textContent)
@@ -227,7 +226,6 @@ casper
           list.push i
     return list
   , dateRemains
-  console.log JSON.stringify candidate
   return
 
 .then(enqueteProceed)
