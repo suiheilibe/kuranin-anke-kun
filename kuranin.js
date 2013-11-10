@@ -247,8 +247,8 @@
   }).start(url, function() {
     this.echo(this.getCurrentUrl());
     return this.fill('form[name="EntranceForm"]', {
-      'memberid': secret.getMemberId(),
-      'memberpass': secret.getMemberPassword()
+      'memberid': secret.get('memberid'),
+      'memberpass': secret.get('memberpass')
     }, true);
   }).then(function() {
     return this.echo(this.getCurrentUrl());
