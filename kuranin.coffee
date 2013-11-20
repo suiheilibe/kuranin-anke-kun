@@ -1,3 +1,7 @@
+###*
+ * @license CC0 1.0 - http://creativecommons.org/publicdomain/zero/1.0/
+###
+
 casper = (require 'casper').create
   'logLevel': 'warning'
   'verbose': true
