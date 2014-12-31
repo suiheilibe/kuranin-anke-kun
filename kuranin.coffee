@@ -140,6 +140,13 @@ enquetePage2 = ->
       'singleAnswer[4].answer': '0004' # 3D映像
       'singleAnswer[5].answer': '0003' # 3D表示
       'singleAnswer[6].answer': '0002' # 何人
+  else if n == 5
+    @fill 'form[name="ProductEnqueteForm"]',
+      'singleAnswer[0].answer': '0004' # ボリューム
+      'singleAnswer[1].answer': '0004' # 難易度
+      'singleAnswer[2].answer': '0004' # 操作しやすかった
+      'singleAnswer[3].answer': '0004' # 3D映像
+      'singleAnswer[4].answer': '0003' # 3D表示
   else
     formError.call @, n
     enqueteCancel.call @
@@ -153,17 +160,15 @@ enquetePage3 = ->
     return
   @echo 'Page3'
   n = @evaluate countUniqueName
-  if n == 4
+  if n == 3
     @fill 'form[name="ProductEnqueteForm"]',
       'singleAnswer[0].answer': '0002' # 何人
       'singleAnswer[1].answer': '0004' # 他の人にオススメ
       'singleAnswer[2].answer': '0001' # 実際に他の人にオススメ
-      'textAnswer[0].answer': defaultText # ご感想、ご意見
-  else if n == 3
+  else if n == 2
     @fill 'form[name="ProductEnqueteForm"]',
       'singleAnswer[0].answer': '0004' # 他の人にオススメ
       'singleAnswer[1].answer': '0001' # 実際に他の人にオススメ
-      'textAnswer[0].answer': defaultText # ご感想、ご意見
   else
     formError.call @, n
     enqueteCancel.call @
@@ -181,6 +186,7 @@ enquetePage4 = ->
     'singleAnswer[0].answer': '0002' # ゲームの経験度
     'textAnswer[0].answer': 25 # 年齢
     'singleAnswer[1].answer': '0001' # 性別
+    'textAnswer[1].answer': defaultText # ご感想、ご意見
   @click 'input#btn_next'
   casper.then enquetePage5
   return
