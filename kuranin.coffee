@@ -59,6 +59,10 @@ enqueteErrorCheck = ->
   else
     false
 
+formError = (n) ->
+  @log "Not recognizable form (n = #{n})", 'warning'
+  return
+
 enquetePage1 = ->
   @echo 'Page1'
   n = @evaluate countUniqueName
@@ -104,7 +108,7 @@ enquetePage1 = ->
     casper.then enquetePage4
     return
   else
-    @log 'Not recognizable form', 'warning'
+    formError.call @, n
     enqueteCancel.call @
     return
 
@@ -137,7 +141,7 @@ enquetePage2 = ->
       'singleAnswer[5].answer': '0003' # 3D表示
       'singleAnswer[6].answer': '0002' # 何人
   else
-    @log 'Not recognizable form', 'warning'
+    formError.call @, n
     enqueteCancel.call @
     return
   @click 'input#btn_next'
@@ -161,7 +165,7 @@ enquetePage3 = ->
       'singleAnswer[1].answer': '0001' # 実際に他の人にオススメ
       'textAnswer[0].answer': defaultText # ご感想、ご意見
   else
-    @log 'Not recognizable form', 'warning'
+    formError.call @, n
     enqueteCancel.call @
     return
 
